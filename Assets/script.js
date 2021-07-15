@@ -60,7 +60,16 @@ function generateNoPassword() {
   ) {
     choice = alert("You must selected a criteria!");
   }
+  // Adding no password text.
+  var noPass = "Try Again";
+
+  document.getElementById("password").textContent = noPass;
 }
+
+// End
+// of
+// noPassword
+
 function generatePassword() {
   // if 1 selected
 
@@ -75,7 +84,7 @@ function generatePassword() {
     confirmSpecialCharacters &&
     confirmNumber
   ) {
-    choice = lowercase.concat(uppercase, specialCharacters, numbers);
+    var choice = lowercase.concat(uppercase, specialCharacters, numbers);
     console.log(choice);
   }
 
@@ -88,5 +97,23 @@ function generatePassword() {
     alert("Please try again.");
   } else if (ok < 8 || ok > 128) {
     alert("Value must be between 8 and 128!");
+  }
+  // setting space for password Input
+  var password = [];
+  // Adding vars up for Input value 8-128
+  for (var i = 0; i < ok; i++) {
+    var pickChoices = choice[Math.floor(Math.random() * choice.length)];
+    password.push(pickChoices);
+  }
+
+  // copying password space to answer from random choice
+  var copy = password.join("");
+  //
+  UserInput(copy);
+  // shows copy
+  return copy;
+  // inserts copy to text Content
+  function UserInput(copy) {
+    document.getElementById("password").textContent = copy;
   }
 }

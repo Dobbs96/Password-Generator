@@ -30,3 +30,8 @@ A website is designed to give a password from answering some ctiteria. At the mo
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/fromCharCode
 - https://www.w3schools.com/js/js_function_parameters.asp
 - https://developer.mozilla.org/en-US/docs/Web/API/Window/confirm
+
+### Need to solve
+
+- Error for All four checks and OK text
+- Add all 1, 2 and 3 selectors
