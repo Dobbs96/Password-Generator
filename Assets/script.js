@@ -71,12 +71,6 @@ function generateNoPassword() {
 // noPassword
 
 function generatePassword() {
-  // if 1 selected
-
-  // if 2 selected
-
-  // if 3 selected
-
   // if 4 all four selected
   if (
     confirmLowercase &&
@@ -87,7 +81,110 @@ function generatePassword() {
     var choice = lowercase.concat(uppercase, specialCharacters, numbers);
     console.log(choice);
   }
-
+  // if 1 selected
+  else if (
+    confirmLowercase &&
+    !confirmUppercase &&
+    !confirmSpecialCharacters &&
+    !confirmNumber
+  ) {
+    choice = lowercase;
+  } else if (
+    !confirmLowercase &&
+    confirmUppercase &&
+    !confirmSpecialCharacters &&
+    !confirmNumber
+  ) {
+    choice = uppercase;
+  } else if (
+    !confirmLowercase &&
+    !confirmUppercase &&
+    confirmSpecialCharacters &&
+    !confirmNumber
+  ) {
+    choice = specialCharacters;
+  } else if (
+    !confirmLowercase &&
+    !confirmUppercase &&
+    !confirmSpecialCharacters &&
+    confirmNumber
+  ) {
+    choice = numbers;
+  }
+  // if 2 selected
+  else if (
+    confirmLowercase &&
+    confirmUppercase &&
+    !confirmSpecialCharacters &&
+    !confirmNumber
+  ) {
+    choice = lowercase.concat(uppercase);
+  } else if (
+    confirmLowercase &&
+    !confirmUppercase &&
+    confirmSpecialCharacters &&
+    !confirmNumber
+  ) {
+    choice = lowercase.concat(specialCharacters);
+  } else if (
+    confirmLowercase &&
+    !confirmUppercase &&
+    !confirmSpecialCharacters &&
+    confirmNumber
+  ) {
+    choice = lowercase.concat(numbers);
+  } else if (
+    !confirmLowercase &&
+    confirmUppercase &&
+    confirmSpecialCharacters &&
+    !confirmNumber
+  ) {
+    choice = uppercase.concat(specialCharacters);
+  } else if (
+    !confirmLowercase &&
+    confirmUppercase &&
+    !confirmSpecialCharacters &&
+    confirmNumber
+  ) {
+    choice = uppercase.concat(numbers);
+  } else if (
+    !confirmLowercase &&
+    !confirmUppercase &&
+    confirmSpecialCharacters &&
+    confirmNumber
+  ) {
+    choice = specialCharacters.concat(numbers);
+  }
+  // if 3 selected
+  else if (
+    confirmLowercase &&
+    confirmUppercase &&
+    confirmSpecialCharacters &&
+    !confirmNumber
+  ) {
+    choice = lowercase.concat(uppercase, specialCharacters);
+  } else if (
+    confirmLowercase &&
+    confirmUppercase &&
+    !confirmSpecialCharacters &&
+    confirmNumber
+  ) {
+    choice = lowercase.concat(uppercase, numbers);
+  } else if (
+    confirmLowercase &&
+    !confirmUppercase &&
+    confirmSpecialCharacters &&
+    confirmNumber
+  ) {
+    choice = lowercase.concat(specialCharacters, numbers);
+  } else if (
+    !confirmLowercase &&
+    confirmUppercase &&
+    confirmSpecialCharacters &&
+    confirmNumber
+  ) {
+    choice = uppercase.concat(specialCharacters, numbers);
+  }
   ok = parseInt(
     prompt(
       "How many characters would you like your password? *Please choose between 8 and 128*"
@@ -97,9 +194,9 @@ function generatePassword() {
     alert("Please try again.");
   } else if (ok < 8 || ok > 128) {
     alert("Value must be between 8 and 128!");
-  }
-  // setting space for password Input
-  var password = [];
+  } else if (ok >= 8 || ok <= 128)
+    // setting space for password Input
+    var password = [];
   // Adding vars up for Input value 8-128
   for (var i = 0; i < ok; i++) {
     var pickChoices = choice[Math.floor(Math.random() * choice.length)];
