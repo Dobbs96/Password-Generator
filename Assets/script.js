@@ -1,19 +1,15 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-var generateBtnNO = document.querySelector("#generate");
 // Write password to the #password input
 function writePassword() {
-  var noPassword = generateNoPassword();
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
-  passwordText.value = noPassword;
   passwordText.value = password;
 }
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-generateBtnNO.addEventListener("click", writePassword);
 
 // quick tpyed vars
 var num = "0123456789";
@@ -26,11 +22,11 @@ var lowercase = lc.split("");
 var specialCharacters = special.split("");
 var uppercase = lc.toUpperCase().split("");
 
-//    working
-console.log(numbers);
-console.log(lowercase);
-console.log(specialCharacters);
-console.log(uppercase);
+// //    working
+// console.log(numbers);
+// console.log(lowercase);
+// console.log(specialCharacters);
+// console.log(uppercase);
 
 // vars for messages on windows screen
 var ok;
@@ -41,7 +37,13 @@ var confirmNumber;
 // need a choice selector
 var choice;
 
-function generateNoPassword() {
+// function generateNoPassword() {}
+
+// // End
+// // of
+// // noPassword
+
+function generatePassword() {
   // 1
   confirmLowercase = confirm("Will it contain Lowercase letters?");
   // 2
@@ -58,28 +60,20 @@ function generateNoPassword() {
     !confirmSpecialCharacters &&
     !confirmNumber
   ) {
-    choice = alert("You must selected a criteria!");
+    choice = alert("***You must selected a criteria!***");
+    // redo
+    generatePassword();
   }
-  // Adding no password text.
-  var noPass = "Try Again";
-
-  document.getElementById("password").textContent = noPass;
-}
-
-// End
-// of
-// noPassword
-
-function generatePassword() {
   // if 4 all four selected
-  if (
+  else if (
     confirmLowercase &&
     confirmUppercase &&
     confirmSpecialCharacters &&
     confirmNumber
   ) {
     var choice = lowercase.concat(uppercase, specialCharacters, numbers);
-    console.log(choice);
+    //// works
+    // console.log(choice);
   }
   // if 1 selected
   else if (
@@ -194,21 +188,25 @@ function generatePassword() {
     alert("Please try again.");
   } else if (ok < 8 || ok > 128) {
     alert("Value must be between 8 and 128!");
-  } else if (ok >= 8 || ok <= 128)
-    // setting space for password Input
-    var password = [];
-  // Adding vars up for Input value 8-128
-  for (var i = 0; i < ok; i++) {
-    var pickChoices = choice[Math.floor(Math.random() * choice.length)];
-    password.push(pickChoices);
+    // redo
+    generatePassword();
   }
+  // setting space for password Input
+  else {
+    var password = [];
+    // Adding vars up for Input value 8-128
+    for (var i = 0; i < ok; i++) {
+      var pickChoices = choice[Math.floor(Math.random() * choice.length)];
+      password.push(pickChoices);
+    }
 
-  // copying password space to answer from random choice
-  var copy = password.join("");
-  //
-  UserInput(copy);
-  // shows copy
-  return copy;
+    // copying password space to answer from random choice
+    var copy = password.join("");
+    //
+    UserInput(copy);
+    // shows copy
+    return copy;
+  }
   // inserts copy to text Content
   function UserInput(copy) {
     document.getElementById("password").textContent = copy;
